@@ -19,9 +19,7 @@ pub fn cors(config: &AWConfig, datastore: &Datastore) -> rocket_cors::Cors {
             .filter(|s| !s.is_empty())
             .filter(|s| {
             let is_valid = s.starts_with("http://")
-                        || s.starts_with("https://")
-                        || s.starts_with("chrome-extension://")
-                        || s.starts_with("moz-extension://");
+                        || s.starts_with("https://");
             if !is_valid {
                 log::warn!("Ignoring invalid CORS origin: '{}'", s);
             }
