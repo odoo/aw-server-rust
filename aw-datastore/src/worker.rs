@@ -536,6 +536,7 @@ impl DatastoreWorker {
                     if key == PRIVACY_FILTERS_KEY {
                         self.reload_privacy_engine(ds, tx);
                     }
+                    self.commit = true;
                     Ok(Response::Empty())
                 }
                 Err(e) => Err(e),
@@ -549,6 +550,7 @@ impl DatastoreWorker {
                     if key == PRIVACY_FILTERS_KEY {
                         self.reload_privacy_engine(ds, tx);
                     }
+                    self.commit = true;
                     Ok(Response::Empty())
                 }
                 Err(e) => Err(e),
