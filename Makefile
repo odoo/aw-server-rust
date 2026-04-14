@@ -20,11 +20,22 @@ else
 	targetdir := release
 endif
 
+# Windows executables support
+ifneq ($(CARGO_BUILD_TARGET),)
+    targetflag := --target $(CARGO_BUILD_TARGET)
+    targetsubdir := $(CARGO_BUILD_TARGET)/
+    binext := .exe
+else
+    targetflag :=
+    targetsubdir :=
+    binext :=
+endif
+
 aw-server: set-version aw-webui
-	cargo build $(cargoflag) --bin aw-server
+	cargo build $(cargoflag) $(targetflag) --bin aw-server
 
 aw-sync: set-version
-	cargo build $(cargoflag) --bin aw-sync
+	cargo build $(cargoflag) $(targetflag) --bin aw-sync
 
 aw-webui:
 ifeq ($(SKIP_WEBUI),true) # Skip building webui if SKIP_WEBUI is true
@@ -88,8 +99,8 @@ package:
 	rm -rf target/package
 	mkdir -p target/package
 	# Copy binaries
-	cp target/$(targetdir)/aw-server target/package/aw-server-rust
-	cp target/$(targetdir)/aw-sync target/package/aw-sync
+	cp target/$(targetsubdir)$(targetdir)/aw-server$(binext) target/package/aw-server-rust$(binext)
+	cp target/$(targetsubdir)$(targetdir)/aw-sync$(binext) target/package/aw-sync$(binext)
 	# Copy service file
 	cp -f aw-server.service target/package/aw-server.service
 	# Copy everything into `dist/aw-server-rust`
