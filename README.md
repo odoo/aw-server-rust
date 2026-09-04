@@ -66,7 +66,7 @@ Available options:
 
 By default, the server allows requests from:
 - The server's own origin (`http://127.0.0.1:<port>`, `http://localhost:<port>`)
-- The official Chrome extension (`chrome-extension://nglaklhklhcoonedhgnpgddginnjdadi`)
+- The official Timesheets Assistant Chrome extension: https://chromewebstore.google.com/detail/timesheets-assistant/bmgldglijgnaohjpjkieijkkjfacifdj (`chrome-extension://bmgldglijgnaohjpjkieijkkjfacifdj`)
 - All Firefox extensions (`moz-extension://.*`)
 
 To allow additional origins (e.g. a sideloaded Chrome extension), add them to your config:

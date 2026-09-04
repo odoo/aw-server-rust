@@ -12,7 +12,7 @@ pub fn cors(config: &AWConfig, datastore_mutex: &Mutex<Datastore>) -> rocket_cor
     allowed_exact_origins.extend(config.cors.clone());
 
     let mut allowed_regex_origins = vec![
-        "chrome-extension://nglaklhklhcoonedhgnpgddginnjdadi".to_string(),
+        "chrome-extension://bmgldglijgnaohjpjkieijkkjfacifdj".to_string(),
     ];
     allowed_regex_origins.extend(config.cors_regex.clone());
 
